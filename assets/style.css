@@ -50,6 +50,12 @@ header { position: sticky; top: 0; z-index: 10; padding: 16px 0; }
 .menu a:hover { color: #fff; background: rgba(255,255,255,.06); }
 .menu a[aria-current="page"] { color: #fff; background: rgba(124,92,255,.38); }
 
+.nav-right { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.lang { display: flex; gap: 2px; padding: 5px; border-radius: 999px; background: rgba(11,13,31,.55); border: 1px solid var(--line); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+.lang a { min-width: 40px; padding: 8px 10px; border-radius: 999px; text-align: center; color: var(--muted); text-decoration: none; font-size: 13px; font-weight: 700; letter-spacing: .5px; transition: background .2s, color .2s; }
+.lang a:hover { color: #fff; background: rgba(255,255,255,.06); }
+.lang a[aria-current="page"] { color: var(--bg); background: linear-gradient(135deg, var(--violet), var(--cyan)); }
+
 /* Glass */
 .glass { background: var(--glass); border: 1px solid var(--line); border-radius: var(--radius); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); box-shadow: 0 24px 70px rgba(0,0,0,.35); }
 
@@ -150,7 +156,11 @@ footer { position: relative; z-index: 1; padding: 32px 0 48px; border-top: 1px s
 @media (max-width: 640px) {
   body { font-size: 16px; }
   header { position: static; }
-  .menu { width: 100%; justify-content: space-between; }
+  .nav { display: grid; grid-template-columns: 1fr auto; grid-template-areas: "brand lang" "menu menu"; }
+  .brand { grid-area: brand; }
+  .nav-right { display: contents; }
+  .lang { grid-area: lang; }
+  .menu { grid-area: menu; justify-content: space-between; }
   .menu a { padding: 9px 10px; font-size: 14px; }
   section { padding: 48px 0; }
   .hero { padding: 40px 0 56px; }
