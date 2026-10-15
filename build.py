@@ -1,175 +1,117 @@
-"""Builds the static site in English (root) and Portuguese (/pt/) from one layout.
+"""Builds the static site in English (root) and Portuguese (/pt/).
 
-Edit text in the T dictionary or PROJECTS list, then run: python3 build.py
+Edit text in T, PROJECTS or SERVICES, then run: python3 build.py
 """
 from pathlib import Path
 
 ROOT = Path(__file__).parent
 SITE_URL = "https://bruna-berleze.github.io"
-# Fill in your profile links here, then run the script again.
-FIVERR_URL = "#contact"
-UPWORK_URL = "#contact"
-
-PAGES = ["index.html", "projects.html", "demos.html", "about.html"]
+PAGES = ["index.html", "projects.html"]
 
 T = {
     "en": {
-        "html_lang": "en",
-        "nav": {"index.html": "Home", "projects.html": "Projects", "demos.html": "Live Demos", "about.html": "About & Contact"},
-        "lang_label": "Language",
+        "html_lang": "en", "lang_label": "Language",
+        "nav_services": "Services", "nav_projects": "Projects",
         "site_title": "Bruna Berleze · Power Platform Developer",
-        "footer": "© 2026 Bruna Berleze · Power Platform &amp; Process Improvement",
-        "cta_title": "Let's work together",
-        "cta_text": "Message me on the platform you found me on.",
-        "cta_fiverr": "Hire me on Fiverr",
-        "cta_upwork": "Hire me on Upwork",
-        "pill": "Power Platform Developer · Electrical Engineer",
-        "h1": "I ran the operations before I built the solutions.",
-        "lead": "Power BI dashboards, Power Apps and Power Automate workflows that digitalize operations and improve decisions in maintenance, production and business.",
-        "btn_projects": "View projects",
-        "btn_demos": "See live demos",
-        "deliver": "HOW I DELIVER",
-        "step_apps": ("Capture · Power Apps", "Replace paper forms and spreadsheets with simple apps."),
-        "step_flow": ("Automate · Power Automate", "Approvals, alerts and data flowing on their own."),
-        "step_bi": ("Decide · Power BI", "KPIs and dashboards people actually use."),
-        "work_eyebrow": "Selected work",
-        "work_h2": "Real problems, digital solutions",
-        "work_p": "Solutions built from hands-on experience in automotive manufacturing: maintenance, production, quality and operations.",
-        "preview_soon": "Preview coming soon",
-        "read_more": "Read more →",
-        "see_all": "See all projects",
         "home_desc": "Power BI, Power Apps and Power Automate solutions from an Electrical Engineer with real manufacturing experience.",
+        "h1": ("I ran the", "operations", "before I built the", "solutions"),
+        "pill": ("I'm a", "Power Platform developer", "with real factory experience"),
+        "story": ["I spent years on the shop floor of the automotive industry,",
+                  "in maintenance, stamping and an emissions lab.",
+                  "Now I turn that experience into Power BI dashboards,",
+                  "Power Apps and Power Automate flows",
+                  "that people actually use."],
+        "stats": [("3", "tools: Power BI, Power Apps and Power Automate"), ("5", "portfolio projects"),
+                  ("2", "postgraduate specializations"), ("C1", "English, working with global clients")],
+        "what": "What I do",
+        "sel": ("Selected", "projects"), "all_projects": "All projects ↗",
+        "shot": "Screenshot coming soon", "soon": "Case study coming soon",
+        "footer": "Power Platform &amp; Process Improvement",
         "proj_title": "Projects",
-        "proj_eyebrow": "Portfolio projects",
-        "proj_p": "Each project shows the problem, what I built and what changed. Data shown is fictional or anonymized.",
-        "proj_desc": "Power BI dashboards, Power Apps and Power Automate projects with problem, solution and result.",
-        "shot_soon": "Screenshot coming soon",
-        "problem": "Problem", "solution": "Solution", "result": "Result",
-        "case_soon": "Case study coming soon",
-        "demos_title": "Live Demos",
-        "demos_eyebrow": "Live demos",
-        "demos_h1": "See it working",
-        "demos_p": "Interactive dashboards you can explore, and short videos of apps and flows in action. All data is fictional or anonymized.",
-        "demos_desc": "Interactive Power BI dashboards and video demos of Power Apps and Power Automate solutions.",
-        "bi_tag": "Power BI · interactive",
-        "bi_hint": "Filter, click and drill down",
-        "bi_soon": "Interactive dashboard coming soon",
-        "bi_sub": "Power BI report embedded here",
-        "apps_tag": "Power Apps · video",
-        "flow_tag": "Power Automate · video",
-        "lup_demo": "LUP App walkthrough",
-        "flow_demo": "Approval flow demo",
-        "video_soon": "Video coming soon",
-        "about_title": "About & Contact",
-        "about_eyebrow": "About &amp; contact",
-        "about_h1": "Hi, I'm Bruna",
-        "about_desc": "Bruna Berleze, Electrical Engineer and Power Platform developer with manufacturing experience at Renault Group.",
-        "about_p": "Electrical Engineer (UTFPR) with hands-on experience in industrial maintenance and process improvement at Renault Group's stamping department and HORSE Powertrain's emissions lab. I map the process first, then pick the right tool: an app, a flow, a dashboard, or all three.",
-        "services": "SERVICES",
-        "svc": ["Data &amp; KPI Dashboards", "Workflow Digitalization", "Process Mapping &amp; Improvement"],
-        "tools": "TOOLS",
-        "credentials": "CREDENTIALS",
-        "creds": ["BSc Electrical Engineering · UTFPR", "Postgraduate · Maintenance Engineering",
-                  "Postgraduate · Business Intelligence, Big Data &amp; AI",
-                  "Google Project Management Professional Certificate", "English · C1 Advanced"],
-        "nf_title": "Page not found", "nf_h1": "This page doesn't exist.", "nf_btn": "Back to home",
+        "proj_desc": "Power BI dashboards, Power Apps and Power Automate projects built from real operational problems.",
+        "proj_h1": ("All", "projects"),
+        "proj_sub": "Dashboards, apps and flows built from real operational problems",
+        "filter_label": "Filter by tool", "all": "All",
+        "nf_title": "Page not found", "nf_h1": ("This page", "doesn't exist"), "nf_btn": "Back to home ↗",
     },
     "pt": {
-        "html_lang": "pt-BR",
-        "nav": {"index.html": "Início", "projects.html": "Projetos", "demos.html": "Demonstrações", "about.html": "Sobre & Contato"},
-        "lang_label": "Idioma",
+        "html_lang": "pt-BR", "lang_label": "Idioma",
+        "nav_services": "Serviços", "nav_projects": "Projetos",
         "site_title": "Bruna Berleze · Desenvolvedora Power Platform",
-        "footer": "© 2026 Bruna Berleze · Power Platform &amp; Melhoria de Processos",
-        "cta_title": "Vamos trabalhar juntos",
-        "cta_text": "Fale comigo pela plataforma onde você me encontrou.",
-        "cta_fiverr": "Contrate pelo Fiverr",
-        "cta_upwork": "Contrate pela Upwork",
-        "pill": "Desenvolvedora Power Platform · Engenheira Eletricista",
-        "h1": "Eu vivi a operação antes de criar as soluções.",
-        "lead": "Dashboards em Power BI, apps em Power Apps e fluxos em Power Automate que digitalizam operações e melhoram decisões na manutenção, na produção e no negócio.",
-        "btn_projects": "Ver projetos",
-        "btn_demos": "Ver demonstrações",
-        "deliver": "COMO EU ENTREGO",
-        "step_apps": ("Capturar · Power Apps", "Troque formulários em papel e planilhas por apps simples."),
-        "step_flow": ("Automatizar · Power Automate", "Aprovações, alertas e dados fluindo sozinhos."),
-        "step_bi": ("Decidir · Power BI", "Indicadores e dashboards que as pessoas realmente usam."),
-        "work_eyebrow": "Trabalhos em destaque",
-        "work_h2": "Problemas reais, soluções digitais",
-        "work_p": "Soluções criadas a partir da experiência prática na indústria automotiva: manutenção, produção, qualidade e operações.",
-        "preview_soon": "Prévia em breve",
-        "read_more": "Saiba mais →",
-        "see_all": "Ver todos os projetos",
         "home_desc": "Soluções em Power BI, Power Apps e Power Automate de uma engenheira eletricista com experiência real na indústria.",
+        "h1": ("Eu vivi a", "operação", "antes de criar as", "soluções"),
+        "pill": ("Sou", "desenvolvedora Power Platform", "com experiência real de fábrica"),
+        "story": ["Passei anos no chão de fábrica da indústria automotiva,",
+                  "na manutenção, na estamparia e num laboratório de emissões.",
+                  "Hoje transformo essa experiência em dashboards no Power BI,",
+                  "apps no Power Apps e fluxos no Power Automate",
+                  "que as pessoas realmente usam."],
+        "stats": [("3", "ferramentas: Power BI, Power Apps e Power Automate"), ("5", "projetos no portfólio"),
+                  ("2", "pós-graduações"), ("C1", "inglês, atendendo clientes do mundo todo")],
+        "what": "O que eu faço",
+        "sel": ("Projetos em", "destaque"), "all_projects": "Todos os projetos ↗",
+        "shot": "Imagem em breve", "soon": "Estudo de caso em breve",
+        "footer": "Power Platform &amp; Melhoria de Processos",
         "proj_title": "Projetos",
-        "proj_eyebrow": "Projetos do portfólio",
-        "proj_p": "Cada projeto mostra o problema, o que eu construí e o que mudou. Os dados exibidos são fictícios ou anonimizados.",
-        "proj_desc": "Projetos em Power BI, Power Apps e Power Automate com problema, solução e resultado.",
-        "shot_soon": "Imagem em breve",
-        "problem": "Problema", "solution": "Solução", "result": "Resultado",
-        "case_soon": "Estudo de caso em breve",
-        "demos_title": "Demonstrações",
-        "demos_eyebrow": "Demonstrações",
-        "demos_h1": "Veja funcionando",
-        "demos_p": "Dashboards interativos para explorar e vídeos curtos de apps e fluxos em ação. Todos os dados são fictícios ou anonimizados.",
-        "demos_desc": "Dashboards interativos em Power BI e vídeos de soluções em Power Apps e Power Automate.",
-        "bi_tag": "Power BI · interativo",
-        "bi_hint": "Filtre, clique e aprofunde",
-        "bi_soon": "Dashboard interativo em breve",
-        "bi_sub": "Relatório do Power BI incorporado aqui",
-        "apps_tag": "Power Apps · vídeo",
-        "flow_tag": "Power Automate · vídeo",
-        "lup_demo": "Demonstração do app LUP",
-        "flow_demo": "Demonstração de fluxo de aprovação",
-        "video_soon": "Vídeo em breve",
-        "about_title": "Sobre & Contato",
-        "about_eyebrow": "Sobre &amp; contato",
-        "about_h1": "Olá, eu sou a Bruna",
-        "about_desc": "Bruna Berleze, engenheira eletricista e desenvolvedora Power Platform com experiência industrial no Grupo Renault.",
-        "about_p": "Engenheira eletricista (UTFPR) com experiência prática em manutenção industrial e melhoria de processos na estamparia do Grupo Renault e no laboratório de emissões da HORSE Powertrain. Primeiro eu mapeio o processo, depois escolho a ferramenta certa: um app, um fluxo, um dashboard ou os três.",
-        "services": "SERVIÇOS",
-        "svc": ["Dashboards e Indicadores", "Digitalização de Processos", "Mapeamento e Melhoria de Processos"],
-        "tools": "FERRAMENTAS",
-        "credentials": "FORMAÇÃO",
-        "creds": ["Engenharia Elétrica · UTFPR", "Pós-graduação · Engenharia de Manutenção",
-                  "Pós-graduação · Business Intelligence, Big Data &amp; IA",
-                  "Certificado Google de Gestão de Projetos", "Inglês · C1 Avançado"],
-        "nf_title": "Página não encontrada", "nf_h1": "Esta página não existe.", "nf_btn": "Voltar ao início",
+        "proj_desc": "Projetos em Power BI, Power Apps e Power Automate criados a partir de problemas reais da operação.",
+        "proj_h1": ("Todos os", "projetos"),
+        "proj_sub": "Dashboards, apps e fluxos criados a partir de problemas reais da operação",
+        "filter_label": "Filtrar por ferramenta", "all": "Todos",
+        "nf_title": "Página não encontrada", "nf_h1": ("Esta página", "não existe"), "nf_btn": "Voltar ao início ↗",
     },
 }
 
-# (id, title, tags, thumb class, description) per language
+TOOLS = {"bi": "Power BI", "apps": "Power Apps", "flow": "Power Automate"}
+
+# thumb: gradient class + text tone. featured: shown on the home page.
 PROJECTS = [
-    ("oee", {"en": "OEE Production Dashboard", "pt": "Dashboard de OEE da Produção"},
-     {"en": [("Power BI", "bi"), ("Manufacturing", "")], "pt": [("Power BI", "bi"), ("Manufatura", "")]}, "g1",
-     {"en": "Availability, performance and quality in one view, so production teams see where capacity is lost.",
-      "pt": "Disponibilidade, desempenho e qualidade numa só visão, para a produção ver onde perde capacidade."}),
-    ("lup", {"en": "LUP One-Point Lesson App", "pt": "App de LUP (Lição de Um Ponto)"},
-     {"en": [("Power Apps", "apps"), ("Training", "")], "pt": [("Power Apps", "apps"), ("Treinamento", "")]}, "g2",
-     {"en": "A simple app to create, find and share one-point lessons on the shop floor instead of printed sheets.",
-      "pt": "Um app simples para criar, encontrar e compartilhar lições de um ponto no chão de fábrica, sem folhas impressas."}),
-    ("dca", {"en": "DCA Digital Form", "pt": "Formulário Digital DCA"},
-     {"en": [("Power Apps", "apps"), ("Quality", "")], "pt": [("Power Apps", "apps"), ("Qualidade", "")]}, "g3",
-     {"en": "A paper-based process turned into a digital form, with records that can be searched and analysed.",
-      "pt": "Um processo em papel transformado em formulário digital, com registros fáceis de buscar e analisar."}),
-    ("shift", {"en": "Shift Handover Digitalization", "pt": "Digitalização da Passagem de Turno"},
-     {"en": [("Power Platform", "flow"), ("Operations", "")], "pt": [("Power Platform", "flow"), ("Operações", "")]}, "g1",
-     {"en": "Shift handover information captured digitally, so the next shift starts with the full picture.",
-      "pt": "Informações da passagem de turno registradas digitalmente, para o próximo turno começar com o quadro completo."}),
-    ("retail", {"en": "Retail Sales Performance", "pt": "Desempenho de Vendas no Varejo"},
-     {"en": [("Power BI", "bi"), ("Retail", "")], "pt": [("Power BI", "bi"), ("Varejo", "")]}, "g2",
-     {"en": "Sales, margin and store performance with filters and drill-down for fast business decisions.",
-      "pt": "Vendas, margem e desempenho por loja, com filtros e detalhamento para decisões rápidas."}),
+    {"id": "oee", "tools": ["bi"], "thumb": "g1 t-dark", "featured": True,
+     "area": {"en": "Manufacturing", "pt": "Manufatura"},
+     "title": {"en": "OEE Production Dashboard", "pt": "Dashboard de OEE da Produção"},
+     "desc": {"en": "Availability, performance and quality in one view, so production teams see where capacity is lost.",
+              "pt": "Disponibilidade, desempenho e qualidade numa só visão, para a produção ver onde perde capacidade."}},
+    {"id": "lup", "tools": ["apps"], "thumb": "g2 t-light", "featured": True,
+     "area": {"en": "Training", "pt": "Treinamento"},
+     "title": {"en": "LUP One-Point Lesson App", "pt": "App de LUP (Lição de Um Ponto)"},
+     "desc": {"en": "A simple app to create, find and share one-point lessons on the shop floor instead of printed sheets.",
+              "pt": "Um app simples para criar, encontrar e compartilhar lições de um ponto no chão de fábrica, sem folhas impressas."}},
+    {"id": "dca", "tools": ["apps"], "thumb": "g3 t-light", "featured": False,
+     "area": {"en": "Quality", "pt": "Qualidade"},
+     "title": {"en": "DCA Digital Form", "pt": "Formulário Digital DCA"},
+     "desc": {"en": "A paper-based process turned into a digital form, with records that can be searched and analysed.",
+              "pt": "Um processo em papel transformado em formulário digital, com registros fáceis de buscar e analisar."}},
+    {"id": "shift", "tools": ["apps", "flow"], "thumb": "g4 t-dark", "featured": False,
+     "area": {"en": "Operations", "pt": "Operações"},
+     "title": {"en": "Shift Handover Digitalization", "pt": "Digitalização da Passagem de Turno"},
+     "desc": {"en": "Shift handover information captured digitally, so the next shift starts with the full picture.",
+              "pt": "Informações da passagem de turno registradas digitalmente, para o próximo turno começar com o quadro completo."}},
+    {"id": "retail", "tools": ["bi"], "thumb": "g5 t-dark", "featured": True,
+     "area": {"en": "Retail", "pt": "Varejo"},
+     "title": {"en": "Retail Sales Performance", "pt": "Desempenho de Vendas no Varejo"},
+     "desc": {"en": "Sales, margin and store performance with filters and drill-down for fast business decisions.",
+              "pt": "Vendas, margem e desempenho por loja, com filtros e detalhamento para decisões rápidas."}},
 ]
 
-TOOLS = ["Power BI", "DAX", "Power Query", "Power Apps", "Power Automate", "SharePoint", "Excel", "Lean"]
+SVG = {
+    "bi": '<svg aria-hidden="true" width="150" height="110" viewBox="0 0 150 110" fill="none"><rect x="6" y="6" width="138" height="92" rx="8" stroke="#8B6CFF" stroke-width="2"/><rect x="20" y="60" width="14" height="26" rx="3" fill="#8B6CFF"/><rect x="42" y="44" width="14" height="42" rx="3" fill="#8B6CFF" opacity=".7"/><rect x="64" y="52" width="14" height="34" rx="3" fill="#8B6CFF" opacity=".5"/><path d="M92 72 L104 54 L116 62 L132 30" stroke="#E6C9E8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="132" cy="30" r="4" fill="#E6C9E8"/><rect x="20" y="18" width="40" height="8" rx="3" fill="#fff" opacity=".5"/></svg>',
+    "apps": '<svg aria-hidden="true" width="150" height="110" viewBox="0 0 150 110" fill="none"><rect x="50" y="4" width="52" height="100" rx="10" stroke="#15122B" stroke-width="2"/><rect x="60" y="20" width="32" height="8" rx="3" fill="#6A4CF0"/><rect x="60" y="36" width="32" height="6" rx="3" fill="#B9B3DA"/><rect x="60" y="48" width="32" height="6" rx="3" fill="#B9B3DA"/><rect x="60" y="72" width="32" height="12" rx="6" fill="#6A4CF0"/><path d="M18 40 h22 M18 54 h16 M112 34 h20 M112 48 h14" stroke="#B9B3DA" stroke-width="2" stroke-linecap="round"/></svg>',
+    "flow": '<svg aria-hidden="true" width="150" height="110" viewBox="0 0 150 110" fill="none"><rect x="8" y="40" width="34" height="30" rx="8" stroke="#15122B" stroke-width="2"/><rect x="58" y="12" width="34" height="30" rx="8" fill="#6A4CF0"/><rect x="58" y="68" width="34" height="30" rx="8" stroke="#15122B" stroke-width="2"/><rect x="108" y="40" width="34" height="30" rx="8" stroke="#15122B" stroke-width="2"/><path d="M42 50 L58 30 M42 60 L58 80 M92 27 L108 50 M92 83 L108 60" stroke="#6A4CF0" stroke-width="2" stroke-linecap="round"/></svg>',
+    "lean": '<svg aria-hidden="true" width="150" height="110" viewBox="0 0 150 110" fill="none"><circle cx="24" cy="55" r="14" stroke="#fff" stroke-width="2"/><circle cx="75" cy="55" r="14" stroke="#fff" stroke-width="2"/><circle cx="126" cy="55" r="14" fill="#fff"/><path d="M38 55 h23 M89 55 h23" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M75 69 C75 96 126 96 126 69" stroke="#E6C9E8" stroke-width="2" stroke-dasharray="4 4"/><path d="M120 55 l4 4 l8 -8" stroke="#6A4CF0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+}
 
-ICON_APP = '<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M10 18h4"/></svg>'
-ICON_FLOW = '<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>'
-ICON_BI = '<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg>'
+SERVICES = [
+    ("dark", "bi", {"en": ("Data &amp; KPI dashboards", "Power BI reports with clean data models and DAX, built around the decisions your team makes."),
+                    "pt": ("Dashboards e indicadores", "Relatórios em Power BI com modelo de dados limpo e DAX, pensados nas decisões da sua equipe.")}),
+    ("gray", "apps", {"en": ("Power Apps for the shop floor", "Simple apps that replace paper forms and scattered spreadsheets."),
+                      "pt": ("Power Apps para o chão de fábrica", "Apps simples que substituem formulários em papel e planilhas espalhadas.")}),
+    ("lilac", "flow", {"en": ("Power Automate workflows", "Approvals, alerts and data moving on their own, without copy and paste."),
+                       "pt": ("Fluxos no Power Automate", "Aprovações, alertas e dados andando sozinhos, sem copiar e colar.")}),
+    ("violet", "lean", {"en": ("Process mapping &amp; Lean", "I map how work really flows first, so the tool fixes the right problem."),
+                        "pt": ("Mapeamento de processos &amp; Lean", "Primeiro eu mapeio como o trabalho acontece, para a ferramenta resolver o problema certo.")}),
+]
 
 
 def url_for(lang, file):
-    """Absolute site path of a page in a language."""
     base = "/" if lang == "en" else "/pt/"
     return base if file == "index.html" else base + file
 
@@ -177,16 +119,13 @@ def url_for(lang, file):
 def layout(lang, file, title, description, body):
     t = T[lang]
     cur = 'aria-current="page"'
-    nav = "\n".join(
-        f'<a href="{url_for(lang, f)}" {cur if f == file else ""}>{t["nav"][f]}</a>' for f in PAGES)
     full_title = t["site_title"] if file == "index.html" else f"{title} · Bruna Berleze"
     en_url, pt_url = url_for("en", file), url_for("pt", file)
     alt = "" if file == "404.html" else f"""<link rel="alternate" hreflang="en" href="{SITE_URL}{en_url}">
 <link rel="alternate" hreflang="pt-BR" href="{SITE_URL}{pt_url}">
 <link rel="alternate" hreflang="x-default" href="{SITE_URL}{en_url}">
 <link rel="canonical" href="{SITE_URL}{url_for(lang, file)}">"""
-    en_cur = cur if lang == "en" else ""
-    pt_cur = cur if lang == "pt" else ""
+    services_href = "#services" if file == "index.html" else url_for(lang, "index.html") + "#services"
     return f"""<!doctype html>
 <html lang="{t['html_lang']}">
 <head>
@@ -199,226 +138,138 @@ def layout(lang, file, title, description, body):
 <meta property="og:type" content="website">
 <meta property="og:image" content="{SITE_URL}/assets/favicon.png">
 {alt}
-<meta name="theme-color" content="#0B0D1F">
+<meta name="theme-color" content="#D9D5F2">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon-64.png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/style.css">
 </head>
 <body>
-<div class="glow v" aria-hidden="true"></div>
-<div class="glow c" aria-hidden="true"></div>
-<div class="glow p" aria-hidden="true"></div>
-<header>
-<div class="wrap nav">
-<a class="brand" href="{url_for(lang, 'index.html')}">Bruna Berleze<span>.</span></a>
-<div class="nav-right">
-<nav class="menu" aria-label="Main">
-{nav}
-</nav>
+<div class="page">
+<div class="sheet">
+<header class="top">
+<a class="brand" href="{url_for(lang, 'index.html')}"><span class="mark">B<span>.</span></span>Bruna Berleze</a>
+<nav class="nav" aria-label="Main">
+<a href="{services_href}">{t['nav_services']}</a>
+<a href="{url_for(lang, 'projects.html')}" {cur if file == 'projects.html' else ''}>{t['nav_projects']}</a>
 <div class="lang" role="group" aria-label="{t['lang_label']}">
-<a href="{en_url}" hreflang="en" lang="en" data-lang="en" {en_cur}>EN</a>
-<a href="{pt_url}" hreflang="pt-BR" lang="pt-BR" data-lang="pt" {pt_cur}>PT</a>
+<a href="{en_url}" hreflang="en" lang="en" data-lang="en" {cur if lang == 'en' else ''}>EN</a>
+<a href="{pt_url}" hreflang="pt-BR" lang="pt-BR" data-lang="pt" {cur if lang == 'pt' else ''}>PT</a>
 </div>
-</div>
-</div>
+</nav>
 </header>
-<main class="wrap">
+<main>
 {body}
 </main>
-<footer>
-<div class="wrap">{t['footer']}</div>
-</footer>
+<footer class="foot"><span>© 2026 Bruna Berleze</span><span>{t['footer']}</span></footer>
+</div>
+</div>
 <script src="/assets/main.js"></script>
 </body>
 </html>
 """
 
 
-def cta(lang):
+def card(lang, p, cls="rise"):
     t = T[lang]
-    return f"""<section id="contact" class="reveal">
-<div class="cta">
-<div>
-<h2>{t['cta_title']}</h2>
-<p>{t['cta_text']}</p>
+    tags = "".join(f'<span class="tag {k}">{TOOLS[k]}</span>' for k in p["tools"])
+    return f"""<a class="card {cls}" href="{url_for(lang, 'projects.html')}#{p['id']}" data-tools="{' '.join(p['tools'])}" id="{p['id']}">
+<div class="thumb {p['thumb']}">{t['shot']}</div>
+<div class="card-body">
+<div class="tags">{tags}<span class="tag area">{p['area'][lang]}</span></div>
+<h3>{p['title'][lang]}</h3>
+<p>{p['desc'][lang]}</p>
+<div class="card-foot"><span>{t['soon']}</span><span class="go" aria-hidden="true">↗</span></div>
 </div>
-<div class="btns">
-<a class="btn primary" href="{FIVERR_URL}">{t['cta_fiverr']}</a>
-<a class="btn ghost" href="{UPWORK_URL}">{t['cta_upwork']}</a>
-</div>
-</div>
-</section>"""
-
-
-def tags_html(tags):
-    return '<div class="tags">' + "".join(f'<span class="tag {c}">{x}</span>' for x, c in tags) + "</div>"
+</a>"""
 
 
 def home(lang):
     t = T[lang]
-    featured = "".join(
-        f"""<article class="card glass">
-<div class="thumb {thumb}">{t['preview_soon']}</div>
-<div class="body">
-{tags_html(tags[lang])}
-<h3>{title[lang]}</h3>
-<p>{desc[lang]}</p>
-<a class="more" href="{url_for(lang, 'projects.html')}#{pid}">{t['read_more']}</a>
-</div>
-</article>""" for pid, title, tags, thumb, desc in PROJECTS[:3])
+    a, b, c, d = t["h1"]
+    pa, pb, pc = t["pill"]
+    story = "\n".join(f'<span class="lit">{s}</span>' for s in t["story"])
+    stats = "".join(f'<div class="stat"><div class="n">{n}</div><div class="l">{l}</div></div>' for n, l in t["stats"])
+    run = "".join(f'<span>{t["what"]}</span><span class="arrow">→</span>' for _ in range(3))
+    services = "".join(
+        f"""<article class="svc {cls} rise"><span class="num">( 0{i + 1} )</span>{SVG[icon]}<h3>{txt[lang][0]}</h3><p>{txt[lang][1]}</p></article>"""
+        for i, (cls, icon, txt) in enumerate(SERVICES))
+    featured = "".join(card(lang, p) for p in PROJECTS if p["featured"])
+    sa, sb = t["sel"]
     body = f"""<section class="hero">
-<div class="stack">
-<span class="pill">{t['pill']}</span>
-<h1>{t['h1']}</h1>
-<p class="lead">{t['lead']}</p>
-<div class="btns">
-<a class="btn primary" href="{url_for(lang, 'projects.html')}">{t['btn_projects']}</a>
-<a class="btn ghost" href="{url_for(lang, 'demos.html')}">{t['btn_demos']}</a>
-</div>
-<div class="tags">
-<span class="tag bi">Power BI</span><span class="tag apps">Power Apps</span><span class="tag flow">Power Automate</span><span class="tag">SharePoint</span><span class="tag">Lean</span>
-</div>
-</div>
-<div class="steps glass">
-<span class="label">{t['deliver']}</span>
-<div class="step apps"><div class="icon">{ICON_APP}</div><div><h3>{t['step_apps'][0]}</h3><p>{t['step_apps'][1]}</p></div></div>
-<div class="step flow"><div class="icon">{ICON_FLOW}</div><div><h3>{t['step_flow'][0]}</h3><p>{t['step_flow'][1]}</p></div></div>
-<div class="step bi"><div class="icon">{ICON_BI}</div><div><h3>{t['step_bi'][0]}</h3><p>{t['step_bi'][1]}</p></div></div>
+<h1 class="display">{a} <span class="accent">{b}</span><br>{c} <span class="accent">{d}</span>
+<span class="aside"><span class="paren" aria-hidden="true">(</span>
+<span class="avatars" aria-hidden="true"><span class="av-bi">BI</span><span class="av-apps">Ap</span><span class="av-flow">Au</span></span>
+<span class="note">{pa} <b>{pb}</b> {pc}</span><span class="paren" aria-hidden="true">)</span></span>
+</h1>
+</section>
+
+<section class="story-wrap">
+<div class="story">
+<p>{story}</p>
+<div class="stats">{stats}</div>
 </div>
 </section>
 
-<section class="reveal">
-<div class="head">
-<span class="eyebrow">{t['work_eyebrow']}</span>
-<h2>{t['work_h2']}</h2>
-<p>{t['work_p']}</p>
-</div>
-<div class="grid">
-{featured}
-</div>
-<div class="btns" style="margin-top:28px"><a class="btn ghost" href="{url_for(lang, 'projects.html')}">{t['see_all']}</a></div>
+<section id="services" class="marquee-wrap">
+<h2 class="sr-only">{t['what']}</h2>
+<div class="marquee" aria-hidden="true"><div>{run}</div><div>{run}</div></div>
 </section>
+<div class="services">{services}</div>
 
-{cta(lang)}"""
-    return layout(lang, "index.html", t["nav"]["index.html"], t["home_desc"], body)
+<section class="section">
+<div class="section-head">
+<h2>{sa} <span class="accent">{sb}</span></h2>
+<a href="{url_for(lang, 'projects.html')}">{t['all_projects']}</a>
+</div>
+<div class="cards">{featured}</div>
+</section>"""
+    return layout(lang, "index.html", t["nav_projects"], t["home_desc"], body)
 
 
 def projects(lang):
     t = T[lang]
-    cases = "".join(
-        f"""<article id="{pid}" class="case glass reveal">
-<div class="thumb {thumb}">{t['shot_soon']}</div>
-<div class="body">
-{tags_html(tags[lang])}
-<h2>{title[lang]}</h2>
-<p style="color:var(--muted)">{desc[lang]}</p>
-<div class="psr">
-<div><b>{t['problem']} · </b><span class="soon">{t['case_soon']}</span></div>
-<div><b>{t['solution']} · </b><span class="soon">{t['case_soon']}</span></div>
-<div><b>{t['result']} · </b><span class="soon">{t['case_soon']}</span></div>
-</div>
-</div>
-</article>""" for pid, title, tags, thumb, desc in PROJECTS)
-    body = f"""<section>
-<div class="head">
-<span class="eyebrow">{t['proj_eyebrow']}</span>
-<h1>{t['proj_title']}</h1>
-<p>{t['proj_p']}</p>
-</div>
-{cases}
+    a, b = t["proj_h1"]
+
+    def count(k):
+        return len(PROJECTS) if k == "all" else sum(k in p["tools"] for p in PROJECTS)
+
+    chips = "".join(
+        f'<button type="button" class="chip" data-filter="{k}" aria-pressed="{"true" if k == "all" else "false"}">'
+        f'<span class="dot {k}" aria-hidden="true"></span>{t["all"] if k == "all" else TOOLS[k]}'
+        f'<span class="count">{count(k)}</span></button>'
+        for k in ["all", "bi", "apps", "flow"])
+    cards = "".join(card(lang, p, "pop") for p in PROJECTS)
+    body = f"""<section class="hero">
+<h1 class="display">{a} <span class="accent">{b}</span>
+<span class="aside"><span class="paren" aria-hidden="true">(</span><span class="note">{t['proj_sub']}</span><span class="paren" aria-hidden="true">)</span></span>
+</h1>
 </section>
-{cta(lang)}"""
+<div class="filters" role="group" aria-label="{t['filter_label']}">{chips}</div>
+<section class="projects-grid" aria-live="polite">
+<div class="cards">{cards}</div>
+</section>"""
     return layout(lang, "projects.html", t["proj_title"], t["proj_desc"], body)
-
-
-def demos(lang):
-    t = T[lang]
-    body = f"""<section>
-<div class="head">
-<span class="eyebrow">{t['demos_eyebrow']}</span>
-<h1>{t['demos_h1']}</h1>
-<p>{t['demos_p']}</p>
-</div>
-
-<div class="demo glass reveal">
-<div class="top"><div class="tags"><span class="tag bi">{t['bi_tag']}</span></div><span class="hint">{t['bi_hint']}</span></div>
-<h3>{PROJECTS[4][1][lang]}</h3>
-<div class="frame report">
-<!-- Paste the Power BI "Publish to web" iframe src below and remove the .empty div:
-<iframe title="Retail Sales Performance" src="PASTE_POWER_BI_LINK_HERE" allowfullscreen loading="lazy"></iframe> -->
-<div class="empty"><strong>{t['bi_soon']}</strong><span>{t['bi_sub']}</span></div>
-</div>
-</div>
-
-<div class="grid">
-<div class="demo glass reveal">
-<div class="tags"><span class="tag apps">{t['apps_tag']}</span></div>
-<h3>{t['lup_demo']}</h3>
-<div class="frame video">
-<!-- <iframe title="LUP App" src="https://www.youtube-nocookie.com/embed/VIDEO_ID" allowfullscreen loading="lazy"></iframe> -->
-<div class="empty"><strong>{t['video_soon']}</strong></div>
-</div>
-</div>
-<div class="demo glass reveal">
-<div class="tags"><span class="tag flow">{t['flow_tag']}</span></div>
-<h3>{t['flow_demo']}</h3>
-<div class="frame video">
-<!-- <iframe title="Approval flow" src="https://www.youtube-nocookie.com/embed/VIDEO_ID" allowfullscreen loading="lazy"></iframe> -->
-<div class="empty"><strong>{t['video_soon']}</strong></div>
-</div>
-</div>
-</div>
-</section>
-{cta(lang)}"""
-    return layout(lang, "demos.html", t["demos_title"], t["demos_desc"], body)
-
-
-def about(lang):
-    t = T[lang]
-    svc_cls = ["bi", "apps", "flow"]
-    svc = "".join(f'<span class="tag {c}">{s}</span>' for s, c in zip(t["svc"], svc_cls))
-    tools = "".join(f'<span class="tag">{x}</span>' for x in TOOLS)
-    creds = "".join(f"<div>{c}</div>" for c in t["creds"])
-    body = f"""<section>
-<div class="head">
-<span class="eyebrow">{t['about_eyebrow']}</span>
-<h1>{t['about_h1']}</h1>
-</div>
-<div class="grid">
-<div class="panel glass reveal">
-<p style="color:var(--muted)">{t['about_p']}</p>
-<span class="label">{t['services']}</span>
-<div class="tags">{svc}</div>
-<span class="label">{t['tools']}</span>
-<div class="tags">{tools}</div>
-</div>
-<div class="panel glass reveal">
-<span class="label">{t['credentials']}</span>
-<div class="list">{creds}</div>
-</div>
-</div>
-</section>
-{cta(lang)}"""
-    return layout(lang, "about.html", t["about_title"], t["about_desc"], body)
 
 
 def not_found(lang):
     t = T[lang]
-    body = f"""<section class="hero"><div class="stack">
-<span class="pill">404</span><h1>{t['nf_h1']}</h1>
-<div class="btns"><a class="btn primary" href="{url_for(lang, 'index.html')}">{t['nf_btn']}</a></div></div></section>"""
+    a, b = t["nf_h1"]
+    body = f"""<section class="hero" style="padding-bottom:120px">
+<h1 class="display">{a} <span class="accent">{b}</span></h1>
+<p style="margin-top:32px"><a href="{url_for(lang, 'index.html')}" style="font-weight:600;text-decoration:none">{t['nf_btn']}</a></p>
+</section>"""
     return layout(lang, "404.html", t["nf_title"], t["nf_title"], body)
 
 
 for lang in ("en", "pt"):
     out = ROOT if lang == "en" else ROOT / "pt"
     out.mkdir(exist_ok=True)
-    for name, fn in [("index.html", home), ("projects.html", projects), ("demos.html", demos), ("about.html", about)]:
-        (out / name).write_text(fn(lang), encoding="utf-8")
+    (out / "index.html").write_text(home(lang), encoding="utf-8")
+    (out / "projects.html").write_text(projects(lang), encoding="utf-8")
 (ROOT / "404.html").write_text(not_found("en"), encoding="utf-8")
 print("built en + pt")
